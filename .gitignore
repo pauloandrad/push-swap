@@ -2,8 +2,8 @@
 *.out
 *.txt
 
-# .claude
-# .debug
+#.claude
+#.debug
 
 #utils
 
