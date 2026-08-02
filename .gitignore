@@ -1,0 +1,10 @@
+*.o
+*.out
+*.txt
+
+# .claude
+# .debug
+
+gnlTester
+
+en.subject.pdf
