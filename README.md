@@ -49,7 +49,7 @@ graph TD
     MEDIUM --> OPSING
     COMPLEX --> OPSING
     ADAPT --> OPSING
-    OPSING <--> OPCOMBO
+    OPSING -.-> OPCOMBO
 
     OPSING -->|print + contador| STDOUT
     OPCOMBO -->|print + contador| STDOUT
