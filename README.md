@@ -1,6 +1,6 @@
 ```mermaid
 graph TD
-    H["includes/push_swap.h<br/>(structs t_ps / t_node, protótipos)"]
+    H["includes/push_swap.h<br/>(structs t_push_swap / t_node, protótipos)"]
 
     subgraph ENTRY["Entrada"]
         MAIN["main.c"]
@@ -35,7 +35,7 @@ graph TD
 
     MAIN -->|argv| PARSE
     PARSE -->|valores validados| STACK
-    STACK -->|t_ps pronta| DIS
+    STACK -->|t_push_swap pronta| DIS
     DIS -->|ps->disorder| SEL
     SEL -->|dispatch| SIMPLE
     SEL -->|dispatch| MEDIUM
@@ -56,14 +56,14 @@ graph TD
     STACK -->|contadores + ps->disorder| BENCH
     SEL -->|nome estratégia| BENCH
 
-    H -.structs/protótipos.-> MAIN
-    H -.structs/protótipos.-> PARSE
-    H -.structs/protótipos.-> STACK
-    H -.structs/protótipos.-> DIS
-    H -.structs/protótipos.-> SEL
-    H -.structs/protótipos.-> ALGOS
-    H -.structs/protótipos.-> OPS
-    H -.structs/protótipos.-> BENCH
+    H -.parse_args.-> MAIN
+    H -.parse_args, check_duplicates.-> PARSE
+    H -.t_node, t_push_swap.-> STACK
+    H -.compute_disorder.-> DIS
+    H -.select_strategy, dispatch_strategy.-> SEL
+    H -.run_simple/medium/complex/adaptive.-> ALGOS
+    H -.op_sa/sb/ss/pa/pb/ra/rb/rr/rra/rrb/rrr.-> OPS
+    H -.t_op_count, print_bench.-> BENCH
 
     classDef default fill:#eef3fa,stroke:#5b7fa6,stroke-width:1px,color:#1f2933
     classDef header fill:#dde7f2,stroke:#3f5c7a,stroke-width:1px,color:#1f2933
