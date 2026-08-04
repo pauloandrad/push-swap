@@ -37,7 +37,7 @@ typedef struct s_op_count
 	int	rrr;
 }	t_op_count;
 
-typedef struct s_push_swap
+typedef struct s_ps
 {
 	t_node		*a;
 	t_node		*b;
@@ -47,7 +47,7 @@ typedef struct s_push_swap
 	t_strategy	strategy;
 	int			bench_mode;
 	t_op_count	operations;
-}	t_push_swap;
+}	t_ps;
 
 
 typedef void	(*t_fn)(t_push_swap *ps);
