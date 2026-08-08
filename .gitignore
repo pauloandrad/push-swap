@@ -1,7 +1,11 @@
 *.o
+*.a
 *.out
 *.txt
+obj
+push_swap
 
+.claude/settings.json
 #.claude
 #.debug
 #.docs
