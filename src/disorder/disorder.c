@@ -1,17 +1,45 @@
-/* =============================================================================
- * disorder.c
- *
- * O QUE FAZER AQUI:
- * - Implementar compute_disorder(t_node *top) seguindo o pseudocódigo do
- *   subject (VI.3.2):
- *     - percorrer todos os pares (i, j) com i < j
- *     - contar quantas vezes a[i] > a[j] (inversões / "mistakes")
- *     - disorder = mistakes / total_pairs (double, entre 0.0 e 1.0)
- * - Deve ser chamada ANTES de qualquer operação ser executada sobre a
- *   stack (senão o valor fica errado / o subject marca isso como
- *   obrigatório).
- * - Cuidado com n <= 1 (total_pairs = 0 -> evitar divisão por zero,
- *   retornar disorder 0.0 nesse caso).
- * - Esse valor é usado tanto pelo --bench (print em %) quanto pelo
- *   algorithms/adaptive.c para decidir qual técnica interna usar.
- * ========================================================================== */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   disorder.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: pahenriq <pahenriq@student.42sp.org.br>    +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
+/*   Created: 2026/08/08 13:29:16 by pahenriq          #+#    #+#             */
+/*   Updated: 2026/08/08 13:29:16 by pahenriq         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../includes/push_swap.h"
+
+
+float	calculate_disorder(t_node *top)
+{
+	int err;
+	int total_pairs;
+
+	t_node i;
+	t_node j;
+
+	errs = 0;
+	total_pairs = 0;
+
+	i = top;
+
+	while (top->next != NULL)
+	{
+		j = i->next;
+		while (j->next != NULL)
+		{
+			total_pairs += 1;
+			if (i->value > j->value)
+				errs += 1;
+		}
+		i = i->next;
+	}
+
+	return (errs / total_pairs);
+}
