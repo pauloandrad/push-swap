@@ -6,100 +6,55 @@
 /*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 13:43:28 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/09 18:24:39 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/09 20:04:32 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h";
+#include "../includes/push_swap.h"
 
-int	is_valid_number(const char *str)
+int	init_ps(t_ps *ps)
 {
-	int	i;
-
-	i = 0;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	if (!str[i])
-		return (0);
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (0);
-		i++;
-	}
+	ps->a = NULL;
+	ps->b = NULL;
+	ps->size_a = 0;
+	ps->size_b = 0;
+	ps->disorder = 0.0;
+	ps->strategy = ADAPTIVE;
+	ps->bench_mode = 0;
+	ps->operations.sa = 0;
+	ps->operations.sb = 0;
+	ps->operations.ss = 0;
+	ps->operations.pa = 0;
+	ps->operations.pb = 0;
+	ps->operations.ra = 0;
+	ps->operations.rb = 0;
+	ps->operations.rr = 0;
+	ps->operations.rra = 0;
+	ps->operations.rrb = 0;
+	ps->operations.rrr = 0;
 	return (1);
 }
 
-t_strategy	parse_strategy(char *argv)
+void	free_ps(t_ps *ps)
 {
-	if (ft_strcmp(argv, "--simple") == 0)
-		return (SIMPLE);
-	else if (ft_strcmp(argv, "--medium") == 0)
-		return (MEDIUM);
-	else if (ft_strcmp(argv, "--complex") == 0)
-		return (COMPLEX);
-	else if (ft_strcmp(argv, "--adaptive") == 0)
-		return (ADAPTIVE);
-	return (NULL);
-}
-
-int	parse_and_set_arg(char arg, t_ps *ps)
-{
-	t_node	*node;
-
-	if (is_valid_number(arg))
-	{
-		node = node_new(ft_atoi(arg));
-		node_push_bottom(ps->a, node);
-	}
-	else if (ft_strcmp(arg, "--bench") == 0)
-		ps->bench_mode = 1;
-	else
-	{
-		ps->strategy = NULL;
-		ps->strategy = parse_strategy(arg);
-		if (!ps->strategy)
-			return (0);
-	}
-	return (1);
-}
-
-int	*parse_args(int argc, char **argv, t_ps *ps)
-{
-	int		i;
-	int		j;
-	char	*args;
-
-	if (argc == 0)
-		return (NULL);
-	i = 0;
-	j = 0;
-	while (i < argc)
-	{
-		args = ft_split(argv[i]);
-		if (!args)
-			return (0);
-		while (args[j])
-		{
-			if (!parse_and_set_arg(args[j], ps))
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
+	stack_clear(&ps->a);
+	stack_clear(&ps->b);
 }
 
 int	main(int argc, char **argv)
 {
-	char	*tmp;
-	int		i;
+	t_ps	ps;
 
-	i = 0;
-	while (i < argc)
+	init_ps(&ps);
+	if (!parse_args(argc, argv, &ps))
 	{
-		tmp = argv[i];
-		i++;
+		free_ps(&ps);
+		write(STDERR_FILENO, "Error\n", 6);
+		return (1);
 	}
+	dispatch_strategy(&ps);
+	print_bench(&ps);
+	free_ps(&ps);
 	return (0);
 }
+

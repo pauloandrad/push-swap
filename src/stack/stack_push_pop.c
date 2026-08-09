@@ -2,19 +2,15 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   stack_push_pop.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+
-	+:+     */
-/*   By: hegoncal <hegoncal@student.42sp.org.br>    +#+  +:+
-	+#+        */
-/*                                                +#+#+#+#+#+
-	+#+           */
-/*   Created: 2026/08/07 22:01:08 by hegoncal          #+#    #+#             */
-/*   Updated: 2026/08/07 22:30:32 by hegoncal         ###   ########.fr       */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/08/09 19:32:27 by pahenriq          #+#    #+#             */
+/*   Updated: 2026/08/09 19:32:32 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-
 
 void	node_push_top(t_node **top, t_node *new)
 {
@@ -29,7 +25,7 @@ void	node_push_top(t_node **top, t_node *new)
 
 void	node_push_bottom(t_node **top, t_node *new)
 {
-	t_node *tmp;
+	t_node	*tmp;
 
 	if (!top || !new)
 		return ;
@@ -47,7 +43,7 @@ void	node_push_bottom(t_node **top, t_node *new)
 
 t_node	*node_pop_front(t_node **top)
 {
-	t_node *popped_node;
+	t_node	*popped_node;
 
 	if (!top || !*top)
 		return (NULL);
