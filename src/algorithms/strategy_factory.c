@@ -2,14 +2,11 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   strategy_factory.c                                 :+:      :+:    :+:   */
-/*                                                    +:+ +:+        
-	+:+     */
-/*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+      
-	+#+        */
-/*                                                +#+#+#+#+#+  
-	+#+           */
-/*   Created: 2026/08/09 12:03:16 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/09 12:03:16 by pahenriq         ###   ########.fr       */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/08/09 13:02:06 by pahenriq          #+#    #+#             */
+/*   Updated: 2026/08/09 13:02:07 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +39,7 @@ float	calculate_disorder(t_node *top)
 	return (errs / total_pairs);
 }
 
-void	(*select_strategy(float disorder))(t_ps *)
+void	(*select_strategy(float disorder))(t_ps *ps)
 {
 	if (disorder < 0.2)
 		return (run_simple);
@@ -54,7 +51,7 @@ void	(*select_strategy(float disorder))(t_ps *)
 
 void	dispatch_strategy(t_ps *ps)
 {
-	void (*handlers[STRATEGY_COUNT])(t_ps * ps);
+	void	(*handlers[STRATEGY_COUNT])(t_ps *ps);
 
 	ps->disorder = calculate_disorder(ps->a);
 	handlers[SIMPLE] = run_simple;

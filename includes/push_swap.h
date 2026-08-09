@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hegoncal <hegoncal@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/07 22:43:34 by hegoncal          #+#    #+#             */
-/*   Updated: 2026/08/08 02:29:53 by hegoncal         ###   ########.fr       */
+/*   Created: 2026/08/09 12:59:35 by pahenriq          #+#    #+#             */
+/*   Updated: 2026/08/09 13:00:35 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef enum e_strategy
 	SIMPLE,
 	MEDIUM,
 	COMPLEX,
-	ADAPTIVE,
+	ADAPTATIVE,
 	STRATEGY_COUNT
 }					t_strategy;
 
@@ -93,7 +93,7 @@ void				run_medium(t_ps *ps);
 void				run_complex(t_ps *ps);
 void				run_adaptive(t_ps *ps);
 
-void 				(*select_strategy(float disorder))(t_ps *)
+void				(*select_strategy(float disorder))(t_ps *);
 void				dispatch_strategy(t_ps *ps);
 
 void				print_bench(t_ps *ps);
