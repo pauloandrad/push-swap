@@ -6,7 +6,7 @@
 /*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 13:02:06 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/09 13:02:07 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/09 14:55:16 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	dispatch_strategy(t_ps *ps)
 	handlers[SIMPLE] = run_simple;
 	handlers[MEDIUM] = run_medium;
 	handlers[COMPLEX] = run_complex;
-	handlers[ADAPTATIVE] = select_strategy(ps->disorder);
+	handlers[ADAPTIVE] = select_strategy(ps->disorder);
 	if (handlers[ps->strategy])
 		handlers[ps->strategy](ps);
 }
