@@ -2,11 +2,14 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   strategy_factory.c                                 :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pahenriq <pahenriq@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/08 21:38:24 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/08 21:38:24 by pahenriq         ###   ########.fr       */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
+/*   Created: 2026/08/09 12:03:16 by pahenriq          #+#    #+#             */
+/*   Updated: 2026/08/09 12:03:16 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +17,10 @@
 
 float	calculate_disorder(t_node *top)
 {
-	float errs;
-	float total_pairs;
-	t_node *i;
-	t_node *j;
+	float	errs;
+	float	total_pairs;
+	t_node	*i;
+	t_node	*j;
 
 	if (stack_size(top) <= 1)
 		return (0);
@@ -32,16 +35,14 @@ float	calculate_disorder(t_node *top)
 			total_pairs += 1;
 			if (i->value > j->value)
 				errs += 1;
-
 			j = j->next;
 		}
 		i = i->next;
 	}
-
 	return (errs / total_pairs);
 }
 
-void (*select_strategy(float disorder))(t_ps *)
+void	(*select_strategy(float disorder))(t_ps *)
 {
 	if (disorder < 0.2)
 		return (run_simple);
