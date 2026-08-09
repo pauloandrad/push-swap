@@ -55,7 +55,7 @@ typedef struct s_ps
 	t_node			*b;
 	int				size_a;
 	int				size_b;
-	double			disorder;
+	float			disorder;
 	t_strategy		strategy;
 	int				bench_mode;
 	t_op_count		operations;
@@ -86,14 +86,14 @@ void				op_rra(t_ps *ps);
 void				op_rrb(t_ps *ps);
 void				op_rrr(t_ps *ps);
 
-double				compute_disorder(t_node *top);
+float				calculate_disorder(t_node *top);
 
 void				run_simple(t_ps *ps);
 void				run_medium(t_ps *ps);
 void				run_complex(t_ps *ps);
 void				run_adaptive(t_ps *ps);
 
-t_strategy			select_strategy(int argc, char **argv, t_ps *ps);
+void 				(*select_strategy(float disorder))(t_ps *)
 void				dispatch_strategy(t_ps *ps);
 
 void				print_bench(t_ps *ps);
