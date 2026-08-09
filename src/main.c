@@ -6,7 +6,7 @@
 /*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 13:43:28 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/09 18:08:49 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/09 18:24:39 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_strategy	parse_strategy(char *argv)
 	return (NULL);
 }
 
-int	*parse_arg(char arg, t_ps *ps)
+int	parse_and_set_arg(char arg, t_ps *ps)
 {
 	t_node	*node;
 
@@ -59,8 +59,9 @@ int	*parse_arg(char arg, t_ps *ps)
 		ps->strategy = NULL;
 		ps->strategy = parse_strategy(arg);
 		if (!ps->strategy)
-			exit(1); // add error handling
+			return (0);
 	}
+	return (1);
 }
 
 int	*parse_args(int argc, char **argv, t_ps *ps)
@@ -76,13 +77,17 @@ int	*parse_args(int argc, char **argv, t_ps *ps)
 	while (i < argc)
 	{
 		args = ft_split(argv[i]);
+		if (!args)
+			return (0);
 		while (args[j])
 		{
-			parse_arg(args[j], ps);
+			if (!parse_and_set_arg(args[j], ps))
+				return (0);
 			j++;
 		}
 		i++;
 	}
+	return (1);
 }
 
 int	main(int argc, char **argv)
