@@ -12,7 +12,7 @@
 
 #include "includes/push_swap.h";
 
-int	is_duplicated(int value, t_ps *ps)
+int	is_unique(int value, t_ps *ps)
 {
 	t_node	*tmp;
 
@@ -22,10 +22,10 @@ int	is_duplicated(int value, t_ps *ps)
 	while (tmp)
 	{
 		if (value == tmp->value)
-			return (1);
+			return (0);
 		tmp = tmp->next;
 	}
-	return (0);
+	return (1);
 }
 
 int	is_valid_number(const char *str)
@@ -74,7 +74,7 @@ int	parse_and_set_arg(char arg, t_ps *ps)
 		return (ps->strategy != NULL);
 	}
 	value = ft_atol(arg);
-	if (value < INT_MIN || value > INT_MAX || is_duplicated((int)value, ps))
+	if (value < INT_MIN || value > INT_MAX || !is_unique((int)value, ps))
 		return (0);
 	node = node_new((int)value);
 	node_push_bottom(&ps->a, node);
