@@ -58,29 +58,26 @@ t_strategy	parse_strategy(char *argv)
 		return (ADAPTIVE);
 	return (NULL);
 }
-
 int	parse_and_set_arg(char arg, t_ps *ps)
 {
 	t_node	*node;
 	long	value;
 
-	if (is_valid_number(arg))
+	if (!is_valid_number(arg))
 	{
-		value = ft_atol(arg);
-		if (value < INT_MIN || value > INT_MAX || is_duplicated((int)value, ps))
-			return (0);
-		node = node_new((int)value);
-		node_push_bottom(&ps->a, node);
-	}
-	else if (ft_strcmp(arg, "--bench") == 0)
-		ps->bench_mode = 1;
-	else
-	{
-		ps->strategy = NULL;
+		if (ft_strcmp(arg, "--bench") == 0)
+		{
+			ps->bench_mode = 1;
+			return (1);
+		}
 		ps->strategy = parse_strategy(arg);
-		if (!ps->strategy)
-			return (0);
+		return (ps->strategy != NULL);
 	}
+	value = ft_atol(arg);
+	if (value < INT_MIN || value > INT_MAX || is_duplicated((int)value, ps))
+		return (0);
+	node = node_new((int)value);
+	node_push_bottom(&ps->a, node);
 	return (1);
 }
 
