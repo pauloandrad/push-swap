@@ -4,6 +4,7 @@
 *.txt
 obj
 push_swap
+custom_tests
 
 .claude/settings.json
 #.claude
