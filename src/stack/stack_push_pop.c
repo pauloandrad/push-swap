@@ -27,15 +27,15 @@
 
 #include "../../includes/push_swap.h"
 
-void	node_push_front(t_node **top, t_node *new)
+void	node_push_front(t_node **top, t_node *node)
 {
-	if (!top || !new)
+	if (!top || !node)
 		return ;
-	new->prev = NULL;
-	new->next = *top;
+	node->prev = NULL;
+	node->next = *top;
 	if (*top)
-		(*top)->prev = new;
-	*top = new;
+		(*top)->prev = node;
+	*top = node;
 }
 
 t_node	*node_pop_front(t_node **top)
@@ -51,4 +51,17 @@ t_node	*node_pop_front(t_node **top)
 	popped_node->next = NULL;
 	popped_node->prev = NULL;
 	return (popped_node);
+}
+
+/* Troca os dois do topo trocando os VALORES, não os nós: nenhum ponteiro
+ * precisa ser reatado e o resultado visível na stack é o mesmo. */
+void	stack_swap_top(t_node **top)
+{
+	int	tmp;
+
+	if (!top || !*top || !(*top)->next)
+		return ;
+	tmp = (*top)->value;
+	(*top)->value = (*top)->next->value;
+	(*top)->next->value = tmp;
 }

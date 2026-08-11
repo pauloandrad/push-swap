@@ -13,8 +13,10 @@ SRCS = src/main.c \
 	src/parsing/error_handling.c \
 	src/stack/stack_new.c \
 	src/stack/stack_push_pop.c \
+	src/stack/stack_rotate.c \
 	src/stack/stack_utils.c \
-	src/operations/single/ops_single.c \
+	src/operations/single/ops_single_ps.c \
+	src/operations/single/ops_single_r.c \
 	src/operations/ops_combo.c \
 	src/disorder/disorder.c \
 	src/selector/strategy_selector.c \

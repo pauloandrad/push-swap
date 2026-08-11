@@ -1,12 +1,48 @@
-/* =============================================================================
- * ops_combo.c
- *
- * O QUE FAZER AQUI:
- * - void op_ss(t_ps *ps): chama op_sa + op_sb, mas imprime "ss\n" UMA vez
- *   só (não "sa\nsb\n"), e incrementa o contador de ss (não os de sa/sb).
- * - void op_rr(t_ps *ps): equivalente combinando ra + rb, imprime "rr\n".
- * - void op_rrr(t_ps *ps): equivalente combinando rra + rrb, imprime "rrr\n".
- * - Dica: reaproveitar a lógica interna de rotação/swap de ops_single.c
- *   (extrair helpers privados sem print/contador) para não duplicar
- *   código e não imprimir "sa" + "sb" quando o certo é "ss".
- * ========================================================================== */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ops_combo.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hegoncal <hegoncal@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/08/09 21:49:19 by hegoncal          #+#    #+#             */
+/*   Updated: 2026/08/10 21:40:53 by hegoncal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../includes/push_swap.h"
+
+static int	has_pair(t_node *top)
+{
+	return (top != NULL && top->next != NULL);
+}
+
+void	op_ss(t_ps *ps)
+{
+	if (!ps || (!has_pair(ps->a) && !has_pair(ps->b)))
+		return ;
+	stack_swap_top(&ps->a);
+	stack_swap_top(&ps->b);
+	ps->operations.ss++;
+	ft_putstr_fd("ss\n", 1);
+}
+
+void	op_rr(t_ps *ps)
+{
+	if (!ps || (!has_pair(ps->a) && !has_pair(ps->b)))
+		return ;
+	stack_rotate(&ps->a);
+	stack_rotate(&ps->b);
+	ps->operations.rr++;
+	ft_putstr_fd("rr\n", 1);
+}
+
+void	op_rrr(t_ps *ps)
+{
+	if (!ps || (!has_pair(ps->a) && !has_pair(ps->b)))
+		return ;
+	stack_reverse_rotate(&ps->a);
+	stack_reverse_rotate(&ps->b);
+	ps->operations.rrr++;
+	ft_putstr_fd("rrr\n", 1);
+}
