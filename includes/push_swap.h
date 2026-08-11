@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hegoncal <hegoncal@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/07 22:43:34 by hegoncal          #+#    #+#             */
-/*   Updated: 2026/08/08 02:29:53 by hegoncal         ###   ########.fr       */
+/*   Created: 2026/08/09 12:59:35 by pahenriq          #+#    #+#             */
+/*   Updated: 2026/08/09 20:01:26 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct s_ps
 	t_node			*b;
 	int				size_a;
 	int				size_b;
-	double			disorder;
+	float			disorder;
 	t_strategy		strategy;
 	int				bench_mode;
 	t_op_count		operations;
@@ -63,9 +63,7 @@ typedef struct s_ps
 
 typedef void		(*t_fn)(t_ps *ps);
 
-int					*parse_args(int argc, char **argv, int *count);
-void				check_duplicates(int *values, int count);
-void				ps_error(t_ps *ps);
+int					*parse_args(int argc, char **argv, t_ps *ps);
 
 t_node				*node_new(int value);
 t_node				*build_stack(int *values, int count);
@@ -73,6 +71,10 @@ t_ps				*ps_new(t_node *stack_a);
 void				stack_clear(t_node **top);
 int					stack_size(t_node *top);
 int					is_sorted(t_node *top);
+
+void				node_push_bottom(t_node **top, t_node *new);
+void				node_push_top(t_node **top, t_node *new);
+t_node				*node_pop_front(t_node **top);
 
 void				op_sa(t_ps *ps);
 void				op_sb(t_ps *ps);
@@ -86,14 +88,14 @@ void				op_rra(t_ps *ps);
 void				op_rrb(t_ps *ps);
 void				op_rrr(t_ps *ps);
 
-double				compute_disorder(t_node *top);
+float				calculate_disorder(t_node *top);
 
 void				run_simple(t_ps *ps);
 void				run_medium(t_ps *ps);
 void				run_complex(t_ps *ps);
 void				run_adaptive(t_ps *ps);
 
-t_strategy			select_strategy(int argc, char **argv, t_ps *ps);
+void (*select_strategy(float disorder))(t_ps *);
 void				dispatch_strategy(t_ps *ps);
 
 void				print_bench(t_ps *ps);
