@@ -6,21 +6,11 @@
 /*   By: hegoncal <hegoncal@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 21:49:29 by hegoncal          #+#    #+#             */
-/*   Updated: 2026/08/10 21:35:02 by hegoncal         ###   ########.fr       */
+/*   Updated: 2026/08/12 21:51:45 by hegoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* =============================================================================
- * ops_single_r.c — as quatro rotações simples (ra, rb, rra, rrb)
- *
- * Toda a mecânica de ponteiros mora em stack/stack_rotate.c. Aqui cada
- * função só faz três coisas, sempre na mesma ordem:
- *   1. sai fora se a stack tem menos de 2 nós (rotacionar não mudaria nada)
- *   2. rotaciona
- *   3. conta a operação e imprime o nome dela em stdout
- * ========================================================================== */
-
-#include "../../../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 void	op_ra(t_ps *ps)
 {
