@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hegoncal <hegoncal@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 12:59:35 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/09 20:01:26 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/12 23:54:47 by hegoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ t_node				*find_min(t_node *top);
 int					find_min_index(t_node *top);
 
 void				node_push_front(t_node **top, t_node *node);
-void				node_push_bottom(t_node **top, t_node *new);
+void				node_push_bottom(t_node **top, t_node *node);
 t_node				*node_pop_front(t_node **top);
 void				stack_swap_top(t_node **top);
 t_node				*stack_last(t_node *top);
