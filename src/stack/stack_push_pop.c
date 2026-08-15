@@ -3,31 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   stack_push_pop.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hegoncal <hegoncal@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/07 22:01:08 by hegoncal          #+#    #+#             */
-/*   Updated: 2026/08/07 22:30:32 by hegoncal         ###   ########.fr       */
+/*   Created: 2026/08/09 19:32:27 by pahenriq          #+#    #+#             */
+/*   Updated: 2026/08/09 19:32:32 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* =============================================================================
- * stack_push_pop.c
- *
- * O QUE FAZER AQUI:
- * - Funções de baixo nível para manipular a lista duplamente ligada que
- *   representa cada stack (independente das operações sa/pa/ra do subject,
- *   que ficam em operations/):
- *     - node_push_front(t_node **top, t_node *node)
- *     - t_node *node_pop_front(t_node **top)
- * - Essas funções são os "tijolos" usados por operations/ops_single.c para
- *   implementar sa, sb, pa, pb, ra, rb, rra, rrb.
- * - Cuidado com os ponteiros prev/next se a lista for circular ou dupla,
- *   para as rotações (ra/rra) ficarem O(1).
- * ========================================================================== */
-
 #include "../../includes/push_swap.h"
 
-void	node_push_front(t_node **top, t_node *node)
+void	node_push_top(t_node **top, t_node *new)
 {
 	if (!top || !node)
 		return ;
@@ -36,6 +21,24 @@ void	node_push_front(t_node **top, t_node *node)
 	if (*top)
 		(*top)->prev = node;
 	*top = node;
+}
+
+void	node_push_bottom(t_node **top, t_node *new)
+{
+	t_node	*tmp;
+
+	if (!top || !new)
+		return ;
+	if (!*top)
+	{
+		*top = new;
+		return ;
+	}
+	tmp = (*top);
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
+	new->prev = tmp;
 }
 
 t_node	*node_pop_front(t_node **top)
