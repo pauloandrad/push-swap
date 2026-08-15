@@ -6,7 +6,7 @@
 /*   By: pahenriq <pahenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 19:21:40 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/15 14:54:41 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/15 15:07:14 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int	parse_and_set_arg(char *arg, t_ps *ps)
 		return (0);
 	node = node_new((int)value);
 	node_push_bottom(&ps->a, node);
+	ps->size_a += 1;
 	return (1);
 }
 
