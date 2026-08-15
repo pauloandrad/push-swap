@@ -71,6 +71,15 @@ t_ps				*ps_new(t_node *stack_a);
 void				stack_clear(t_node **top);
 int					stack_size(t_node *top);
 int					is_sorted(t_node *top);
+t_node				*find_min(t_node *top);
+int					find_min_index(t_node *top);
+
+void				node_push_front(t_node **top, t_node *node);
+t_node				*node_pop_front(t_node **top);
+void				stack_swap_top(t_node **top);
+t_node				*stack_last(t_node *top);
+void				stack_rotate(t_node **top);
+void				stack_reverse_rotate(t_node **top);
 
 void				node_push_bottom(t_node **top, t_node *new);
 void				node_push_top(t_node **top, t_node *new);
