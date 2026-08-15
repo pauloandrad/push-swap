@@ -1,20 +1,19 @@
 NAME = push_swap
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I includes
+CFLAGS = -Wall -Wextra -Werror -I includes -g
 SRCS = src/main.c \
 	src/parsing/parse_args.c \
-	src/parsing/error_handling.c \
 	src/stack/stack_new.c \
 	src/stack/stack_push_pop.c \
+	src/stack/stack_rotate.c \
 	src/stack/stack_utils.c \
-	src/operations/single/ops_single.c \
+	src/operations/ops_push_swap.c \
+	src/operations/ops_rotate.c \
 	src/operations/ops_combo.c \
-	src/disorder/disorder.c \
-	src/selector/strategy_selector.c \
 	src/algorithms/simple.c \
 	src/algorithms/medium.c \
 	src/algorithms/complex.c \
-	src/algorithms/adaptive.c \
+	src/algorithms/strategy_factory.c \
 	src/bench/bench.c
 
 OBJ_DIR = obj
