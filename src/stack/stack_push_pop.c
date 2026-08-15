@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_push_pop.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hegoncal <hegoncal@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: pahenriq <pahenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 19:32:27 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/12 23:48:19 by hegoncal         ###   ########.fr       */
+/*   Updated: 2026/08/15 14:02:58 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_rotate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hegoncal <hegoncal@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: pahenriq <pahenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 21:30:12 by hegoncal          #+#    #+#             */
-/*   Updated: 2026/08/12 23:48:15 by hegoncal         ###   ########.fr       */
+/*   Updated: 2026/08/15 14:02:55 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
