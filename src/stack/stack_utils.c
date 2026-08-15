@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hegoncal <hegoncal@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+
+	+:+     */
+/*   By: hegoncal <hegoncal@student.42sp.org.br>    +#+  +:+
+	+#+        */
+/*                                                +#+#+#+#+#+
+	+#+           */
 /*   Created: 2026/08/07 21:36:19 by hegoncal          #+#    #+#             */
 /*   Updated: 2026/08/08 01:15:35 by hegoncal         ###   ########.fr       */
 /*                                                                            */
@@ -12,10 +15,11 @@
 
 #include "../../includes/push_swap.h"
 
+
 int	stack_size(t_node *top)
 {
-	int		nodes;
-	t_node	*tmp;
+	int nodes;
+	t_node *tmp;
 
 	nodes = 0;
 	tmp = top;
@@ -42,8 +46,8 @@ int	is_sorted(t_node *top)
 
 t_node	*find_min(t_node *top)
 {
-	t_node	*min;
-	t_node	*tmp;
+	t_node *min;
+	t_node *tmp;
 
 	if (!top)
 		return (NULL);
@@ -60,8 +64,8 @@ t_node	*find_min(t_node *top)
 
 int	find_min_index(t_node *top)
 {
-	t_node	*min;
-	int		i;
+	t_node *min;
+	int i;
 
 	min = find_min(top);
 	if (!min)
@@ -73,4 +77,13 @@ int	find_min_index(t_node *top)
 		top = top->next;
 	}
 	return (i);
+}
+
+t_node	*stack_last(t_node *top)
+{
+	if (!top)
+		return (NULL);
+	while (top->next != NULL)
+		top = top->next;
+	return (top);
 }

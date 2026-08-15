@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   stack_push_pop.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hegoncal <hegoncal@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 19:32:27 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/09 19:32:32 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/12 23:48:19 by hegoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	node_push_top(t_node **top, t_node *new)
+void	node_push_top(t_node **top, t_node *node)
 {
 	if (!top || !node)
 		return ;
@@ -41,7 +41,7 @@ void	node_push_bottom(t_node **top, t_node *new)
 	new->prev = tmp;
 }
 
-t_node	*node_pop_front(t_node **top)
+t_node	*node_pop_top(t_node **top)
 {
 	t_node	*popped_node;
 
@@ -56,8 +56,6 @@ t_node	*node_pop_front(t_node **top)
 	return (popped_node);
 }
 
-/* Troca os dois do topo trocando os VALORES, não os nós: nenhum ponteiro
- * precisa ser reatado e o resultado visível na stack é o mesmo. */
 void	stack_swap_top(t_node **top)
 {
 	int	tmp;

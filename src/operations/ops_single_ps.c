@@ -6,11 +6,11 @@
 /*   By: hegoncal <hegoncal@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 21:54:44 by hegoncal          #+#    #+#             */
-/*   Updated: 2026/08/10 21:41:07 by hegoncal         ###   ########.fr       */
+/*   Updated: 2026/08/12 23:48:15 by hegoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 void	op_sa(t_ps *ps)
 {
@@ -36,8 +36,8 @@ void	op_pa(t_ps *ps)
 
 	if (!ps || !ps->b)
 		return ;
-	moved = node_pop_front(&ps->b);
-	node_push_front(&ps->a, moved);
+	moved = node_pop_top(&ps->b);
+	node_push_top(&ps->a, moved);
 	ps->size_a++;
 	ps->size_b--;
 	ps->operations.pa++;
@@ -50,8 +50,8 @@ void	op_pb(t_ps *ps)
 
 	if (!ps || !ps->a)
 		return ;
-	moved = node_pop_front(&ps->a);
-	node_push_front(&ps->b, moved);
+	moved = node_pop_top(&ps->a);
+	node_push_top(&ps->b, moved);
 	ps->size_b++;
 	ps->size_a--;
 	ps->operations.pb++;

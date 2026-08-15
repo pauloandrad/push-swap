@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hegoncal <hegoncal@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 13:43:28 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/09 20:09:04 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/12 22:29:38 by hegoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 	t_ps	ps;
 
 	ps = (t_ps){0};
-	ps->strategy = ADAPTIVE;
+	ps.strategy = ADAPTIVE;
 	if (!parse_args(argc, argv, &ps))
 	{
 		free_ps(&ps);
@@ -35,4 +35,3 @@ int	main(int argc, char **argv)
 	free_ps(&ps);
 	return (0);
 }
-

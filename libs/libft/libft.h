@@ -22,4 +22,10 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 char	*ft_utoa_base(unsigned long n, int base, const char *charset);
 
+int		ft_isdigit(int c);
+int		ft_strcmp(char *s1, char *s2);
+long	ft_atol(const char *str);
+int		ft_atoi(const char *str);
+char	**ft_split(char const *s, char c);
+
 #endif
