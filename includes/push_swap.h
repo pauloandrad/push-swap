@@ -63,7 +63,7 @@ typedef struct s_ps
 
 typedef void		(*t_fn)(t_ps *ps);
 
-int					*parse_args(int argc, char **argv, t_ps *ps);
+int					parse_args(int argc, char **argv, t_ps *ps);
 
 t_node				*node_new(int value);
 t_node				*build_stack(int *values, int count);
@@ -74,9 +74,9 @@ int					is_sorted(t_node *top);
 t_node				*find_min(t_node *top);
 int					find_min_index(t_node *top);
 
-void				node_push_front(t_node **top, t_node *node);
+void				node_push_top(t_node **top, t_node *node);
 void				node_push_bottom(t_node **top, t_node *node);
-t_node				*node_pop_front(t_node **top);
+t_node				*node_pop_top(t_node **top);
 void				stack_swap_top(t_node **top);
 t_node				*stack_last(t_node *top);
 void				stack_rotate(t_node **top);

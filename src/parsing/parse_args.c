@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pahenriq <pahenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 19:21:40 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/09 19:57:07 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/15 15:07:14 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h";
+#include "../includes/push_swap.h"
 
 int	is_unique(int value, t_ps *ps)
 {
 	t_node	*tmp;
 
 	if (!ps->a)
-		return (0);
+		return (1);
 	tmp = ps->a;
 	while (tmp)
 	{
@@ -56,9 +56,9 @@ t_strategy	parse_strategy(char *argv)
 		return (COMPLEX);
 	else if (ft_strcmp(argv, "--adaptive") == 0)
 		return (ADAPTIVE);
-	return (NULL);
+	return (STRATEGY_COUNT);
 }
-int	parse_and_set_arg(char arg, t_ps *ps)
+int	parse_and_set_arg(char *arg, t_ps *ps)
 {
 	t_node	*node;
 	long	value;
@@ -71,31 +71,32 @@ int	parse_and_set_arg(char arg, t_ps *ps)
 			return (1);
 		}
 		ps->strategy = parse_strategy(arg);
-		return (ps->strategy != NULL);
+		return (ps->strategy != STRATEGY_COUNT);
 	}
 	value = ft_atol(arg);
 	if (value < INT_MIN || value > INT_MAX || !is_unique((int)value, ps))
 		return (0);
 	node = node_new((int)value);
 	node_push_bottom(&ps->a, node);
+	ps->size_a += 1;
 	return (1);
 }
 
-int	*parse_args(int argc, char **argv, t_ps *ps)
+int	parse_args(int argc, char **argv, t_ps *ps)
 {
 	int		i;
 	int		j;
-	char	*args;
+	char	**args;
 
-	if (argc == 0)
-		return (NULL);
-	i = 0;
-	j = 0;
+	if (argc <= 1)
+		return (0);
+	i = 1;
 	while (i < argc)
 	{
-		args = ft_split(argv[i], " ");
+		args = ft_split(argv[i], ' ');
 		if (!args)
 			return (0);
+		j = 0;
 		while (args[j])
 		{
 			if (!parse_and_set_arg(args[j], ps))
