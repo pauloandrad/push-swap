@@ -16,9 +16,9 @@ int	is_unique(int value, t_ps *ps)
 {
 	t_node	*tmp;
 
-	if (!ps->a)
+	if (!ps->a.top)
 		return (1);
-	tmp = ps->a;
+	tmp = ps->a.top;
 	while (tmp)
 	{
 		if (value == tmp->value)
@@ -77,7 +77,8 @@ int	parse_and_set_arg(char *arg, t_ps *ps)
 	if (value < INT_MIN || value > INT_MAX || !is_unique((int)value, ps))
 		return (0);
 	node = node_new((int)value);
-	node_push_bottom(&ps->a, node);
+	node_push_bottom(&ps->a.top, node);
+	ps->a.size++;
 	return (1);
 }
 

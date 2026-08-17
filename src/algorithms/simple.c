@@ -17,9 +17,9 @@ static void	bubble_sort(t_ps *ps)
 	int	compared;
 
 	compared = 0;
-	while (compared < ps->size_a - 1)
+	while (compared < ps->a.size - 1)
 	{
-		if (ps->a->value > ps->a->next->value)
+		if (ps->a.top->value > ps->a.top->next->value)
 			op_sa(ps);
 		op_ra(ps);
 		compared++;
@@ -29,8 +29,8 @@ static void	bubble_sort(t_ps *ps)
 
 void	run_simple(t_ps *ps)
 {
-	if (!ps || ps->size_a < 2)
+	if (!ps || ps->a.size < 2)
 		return ;
-	while (!is_sorted(ps->a))
+	while (!is_sorted(ps->a.top))
 		bubble_sort(ps);
 }

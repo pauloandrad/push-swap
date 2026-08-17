@@ -14,18 +14,18 @@
 
 void	op_sa(t_ps *ps)
 {
-	if (!ps || !ps->a || !ps->a->next)
+	if (!ps || !ps->a.top || !ps->a.top->next)
 		return ;
-	stack_swap_top(&ps->a);
+	stack_swap_top(&ps->a.top);
 	ps->operations.sa++;
 	ft_putstr_fd("sa\n", 1);
 }
 
 void	op_sb(t_ps *ps)
 {
-	if (!ps || !ps->b || !ps->b->next)
+	if (!ps || !ps->b.top || !ps->b.top->next)
 		return ;
-	stack_swap_top(&ps->b);
+	stack_swap_top(&ps->b.top);
 	ps->operations.sb++;
 	ft_putstr_fd("sb\n", 1);
 }
@@ -34,12 +34,12 @@ void	op_pa(t_ps *ps)
 {
 	t_node	*moved;
 
-	if (!ps || !ps->b)
+	if (!ps || !ps->b.top)
 		return ;
-	moved = node_pop_top(&ps->b);
-	node_push_top(&ps->a, moved);
-	ps->size_a++;
-	ps->size_b--;
+	moved = node_pop_top(&ps->b.top);
+	node_push_top(&ps->a.top, moved);
+	ps->a.size++;
+	ps->b.size--;
 	ps->operations.pa++;
 	ft_putstr_fd("pa\n", 1);
 }
@@ -48,12 +48,12 @@ void	op_pb(t_ps *ps)
 {
 	t_node	*moved;
 
-	if (!ps || !ps->a)
+	if (!ps || !ps->a.top)
 		return ;
-	moved = node_pop_top(&ps->a);
-	node_push_top(&ps->b, moved);
-	ps->size_b++;
-	ps->size_a--;
+	moved = node_pop_top(&ps->a.top);
+	node_push_top(&ps->b.top, moved);
+	ps->b.size++;
+	ps->a.size--;
 	ps->operations.pb++;
 	ft_putstr_fd("pb\n", 1);
 }

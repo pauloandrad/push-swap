@@ -53,7 +53,7 @@ void	dispatch_strategy(t_ps *ps)
 {
 	void	(*handlers[STRATEGY_COUNT])(t_ps *ps);
 
-	ps->disorder = calculate_disorder(ps->a);
+	ps->disorder = calculate_disorder(ps->a.top);
 	handlers[SIMPLE] = run_simple;
 	handlers[MEDIUM] = run_medium;
 	handlers[COMPLEX] = run_complex;

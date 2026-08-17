@@ -19,30 +19,30 @@ static int	has_pair(t_node *top)
 
 void	op_ss(t_ps *ps)
 {
-	if (!ps || (!has_pair(ps->a) && !has_pair(ps->b)))
+	if (!ps || (!has_pair(ps->a.top) && !has_pair(ps->b.top)))
 		return ;
-	stack_swap_top(&ps->a);
-	stack_swap_top(&ps->b);
+	stack_swap_top(&ps->a.top);
+	stack_swap_top(&ps->b.top);
 	ps->operations.ss++;
 	ft_putstr_fd("ss\n", 1);
 }
 
 void	op_rr(t_ps *ps)
 {
-	if (!ps || (!has_pair(ps->a) && !has_pair(ps->b)))
+	if (!ps || (!has_pair(ps->a.top) && !has_pair(ps->b.top)))
 		return ;
-	stack_rotate(&ps->a);
-	stack_rotate(&ps->b);
+	stack_rotate(&ps->a.top);
+	stack_rotate(&ps->b.top);
 	ps->operations.rr++;
 	ft_putstr_fd("rr\n", 1);
 }
 
 void	op_rrr(t_ps *ps)
 {
-	if (!ps || (!has_pair(ps->a) && !has_pair(ps->b)))
+	if (!ps || (!has_pair(ps->a.top) && !has_pair(ps->b.top)))
 		return ;
-	stack_reverse_rotate(&ps->a);
-	stack_reverse_rotate(&ps->b);
+	stack_reverse_rotate(&ps->a.top);
+	stack_reverse_rotate(&ps->b.top);
 	ps->operations.rrr++;
 	ft_putstr_fd("rrr\n", 1);
 }

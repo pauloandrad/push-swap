@@ -6,7 +6,7 @@
 /*   By: pahenriq <pahenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:31:09 by hegoncal          #+#    #+#             */
-/*   Updated: 2026/08/15 14:54:09 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/16 22:10:58 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,39 +52,6 @@ t_node	*build_stack(int *values, int count)
 	return (top);
 }
 
-static void	set_op_count(t_op_count *ops)
-{
-	ops->sa = 0;
-	ops->sb = 0;
-	ops->ss = 0;
-	ops->pa = 0;
-	ops->pb = 0;
-	ops->ra = 0;
-	ops->rb = 0;
-	ops->rr = 0;
-	ops->rra = 0;
-	ops->rrb = 0;
-	ops->rrr = 0;
-}
-
-t_ps	*ps_new(t_node *stack_a)
-{
-	t_ps	*ps;
-
-	ps = malloc(sizeof(t_ps));
-	if (!ps)
-		return (NULL);
-	ps->a = stack_a;
-	ps->b = NULL;
-	ps->size_a = stack_size(stack_a);
-	ps->size_b = 0;
-	ps->disorder = 0.0;
-	ps->strategy = ADAPTIVE;
-	ps->bench_mode = 0;
-	set_op_count(&ps->operations);
-	return (ps);
-}
-
 void	stack_clear(t_node **top)
 {
 	t_node	*tmp;
@@ -100,4 +67,28 @@ void	stack_clear(t_node **top)
 		tmp = next_cpy;
 	}
 	*top = NULL;
+}
+
+int	stack_size(t_node *top)
+{
+	int nodes;
+	t_node *tmp;
+
+	nodes = 0;
+	tmp = top;
+	while (tmp != NULL)
+	{
+		nodes++;
+		tmp = tmp->next;
+	}
+	return (nodes);
+}
+
+t_node	*stack_last(t_node *top)
+{
+	if (!top)
+		return (NULL);
+	while (top->next != NULL)
+		top = top->next;
+	return (top);
 }

@@ -6,7 +6,7 @@
 /*   By: pahenriq <pahenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 13:43:28 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/15 14:02:47 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/16 22:16:15 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	free_ps(t_ps *ps)
 {
-	stack_clear(&ps->a);
-	stack_clear(&ps->b);
+	stack_clear(&ps->a.top);
+	stack_clear(&ps->b.top);
 }
 
 int	main(int argc, char **argv)
@@ -32,6 +32,8 @@ int	main(int argc, char **argv)
 	}
 	dispatch_strategy(&ps);
 	// print_bench(&ps);
+	print_stack(ps.a.top);
+	print_stack(ps.b.top);
 	free_ps(&ps);
 	return (0);
 }

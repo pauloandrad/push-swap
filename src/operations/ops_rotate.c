@@ -14,36 +14,36 @@
 
 void	op_ra(t_ps *ps)
 {
-	if (!ps || !ps->a || !ps->a->next)
+	if (!ps || !ps->a.top || !ps->a.top->next)
 		return ;
-	stack_rotate(&ps->a);
+	stack_rotate(&ps->a.top);
 	ps->operations.ra++;
 	ft_putstr_fd("ra\n", 1);
 }
 
 void	op_rb(t_ps *ps)
 {
-	if (!ps || !ps->b || !ps->b->next)
+	if (!ps || !ps->b.top || !ps->b.top->next)
 		return ;
-	stack_rotate(&ps->b);
+	stack_rotate(&ps->b.top);
 	ps->operations.rb++;
 	ft_putstr_fd("rb\n", 1);
 }
 
 void	op_rra(t_ps *ps)
 {
-	if (!ps || !ps->a || !ps->a->next)
+	if (!ps || !ps->a.top || !ps->a.top->next)
 		return ;
-	stack_reverse_rotate(&ps->a);
+	stack_reverse_rotate(&ps->a.top);
 	ps->operations.rra++;
 	ft_putstr_fd("rra\n", 1);
 }
 
 void	op_rrb(t_ps *ps)
 {
-	if (!ps || !ps->b || !ps->b->next)
+	if (!ps || !ps->b.top || !ps->b.top->next)
 		return ;
-	stack_reverse_rotate(&ps->b);
+	stack_reverse_rotate(&ps->b.top);
 	ps->operations.rrb++;
 	ft_putstr_fd("rrb\n", 1);
 }
