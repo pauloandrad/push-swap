@@ -2,21 +2,23 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pahenriq <pahenriq@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/15 13:52:15 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/15 13:52:18 by pahenriq         ###   ########.fr       */
+/*                                                    +:+ +:+
+	+:+     */
+/*   By: hegoncal <hegoncal@student.42sp.org.br>    +#+  +:+
+	+#+        */
+/*                                                +#+#+#+#+#+
+	+#+           */
+/*   Created: 2026/08/07 21:36:19 by hegoncal          #+#    #+#             */
+/*   Updated: 2026/08/08 01:15:35 by hegoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-
 int	stack_size(t_node *top)
 {
-	int nodes;
-	t_node *tmp;
+	int		nodes;
+	t_node	*tmp;
 
 	nodes = 0;
 	tmp = top;
@@ -41,39 +43,27 @@ int	is_sorted(t_node *top)
 	return (1);
 }
 
-t_node	*find_min(t_node *top)
+int	get_index(t_ps *ps, int current_value)
 {
-	t_node *min;
-	t_node *tmp;
+	int		index;
+	t_node	*tmp;
 
-	if (!top)
-		return (NULL);
-	min = top;
-	tmp = top->next;
-	while (tmp != NULL)
+	index = 0;
+	tmp = ps->a;
+	while (tmp)
 	{
-		if (tmp->value < min->value)
-			min = tmp;
+		if (tmp->value < current_value)
+			index++;
 		tmp = tmp->next;
 	}
-	return (min);
-}
-
-int	find_min_index(t_node *top)
-{
-	t_node *min;
-	int i;
-
-	min = find_min(top);
-	if (!min)
-		return (-1);
-	i = 0;
-	while (top != min)
+	tmp = ps->b;
+	while (tmp)
 	{
-		i++;
-		top = top->next;
+		if (tmp->value < current_value)
+			index++;
+		tmp = tmp->next;
 	}
-	return (i);
+	return (index);
 }
 
 t_node	*stack_last(t_node *top)

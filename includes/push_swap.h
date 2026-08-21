@@ -6,14 +6,14 @@
 /*   By: hegoncal <hegoncal@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 12:59:35 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/12 23:54:47 by hegoncal         ###   ########.fr       */
+/*   Updated: 2026/08/22 15:22:27 by hegoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../libs/libft/libft.h"
+# include "libft.h"
 # include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -71,12 +71,11 @@ t_ps				*ps_new(t_node *stack_a);
 void				stack_clear(t_node **top);
 int					stack_size(t_node *top);
 int					is_sorted(t_node *top);
-t_node				*find_min(t_node *top);
-int					find_min_index(t_node *top);
+int					get_index(t_ps *ps, int current_value);
 
+t_node				*node_pop_top(t_node **top);
 void				node_push_top(t_node **top, t_node *node);
 void				node_push_bottom(t_node **top, t_node *node);
-t_node				*node_pop_top(t_node **top);
 void				stack_swap_top(t_node **top);
 t_node				*stack_last(t_node *top);
 void				stack_rotate(t_node **top);
@@ -101,9 +100,7 @@ void				run_medium(t_ps *ps);
 void				run_complex(t_ps *ps);
 void				run_adaptive(t_ps *ps);
 
-void (*select_strategy(float disorder))(t_ps *);
+void				(*select_strategy(float disorder))(t_ps *);
 void				dispatch_strategy(t_ps *ps);
-
-void				print_bench(t_ps *ps);
 
 #endif

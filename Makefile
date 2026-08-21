@@ -1,20 +1,19 @@
 NAME = push_swap
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I includes -g
-SRCS = src/main.c \
-	src/parsing/parse_args.c \
-	src/stack/stack_new.c \
-	src/stack/stack_push_pop.c \
-	src/stack/stack_rotate.c \
-	src/stack/stack_utils.c \
-	src/operations/ops_push_swap.c \
-	src/operations/ops_rotate.c \
-	src/operations/ops_combo.c \
-	src/algorithms/simple.c \
-	src/algorithms/medium.c \
-	src/algorithms/complex.c \
-	src/algorithms/strategy_factory.c \
-	src/bench/bench.c
+CFLAGS = -Wall -Wextra -Werror -I includes -I $(LIBFT_DIR)
+SRCS = src/algorithms/complex.c \
+       src/algorithms/medium.c \
+       src/algorithms/simple.c \
+       src/algorithms/strategy_factory.c \
+       src/stack/stack_new.c \
+       src/stack/stack_push_pop.c \
+       src/stack/stack_rotate.c \
+       src/stack/stack_utils.c \
+       src/operations/ops_combo.c \
+       src/operations/ops_push_swap.c \
+       src/operations/ops_rotate.c \
+       src/parsing/parse_args.c \
+       src/main.c
 
 OBJ_DIR = obj
 
@@ -49,4 +48,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re $(LIBFT)

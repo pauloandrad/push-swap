@@ -5,7 +5,10 @@
 obj
 push_swap
 custom_tests
+print_stack.h
+compile_flags.txt
 
+.vscode
 .claude/settings.json
 #.claude
 #.debug
