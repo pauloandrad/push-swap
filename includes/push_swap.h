@@ -6,7 +6,7 @@
 /*   By: hegoncal <hegoncal@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 12:59:35 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/22 15:22:27 by hegoncal         ###   ########.fr       */
+/*   Updated: 2026/08/22 19:45:22 by hegoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,9 @@ void				run_adaptive(t_ps *ps);
 
 void				(*select_strategy(float disorder))(t_ps *);
 void				dispatch_strategy(t_ps *ps);
+
+void				print_disorder(float disorder, int fd);
+void				print_strategy(t_strategy strategy, int fd);
+void				print_bench(t_ps *ps);
 
 #endif

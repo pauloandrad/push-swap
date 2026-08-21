@@ -31,7 +31,8 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	dispatch_strategy(&ps);
-	// print_bench(&ps);
+	if (ps.bench_mode)
+		print_bench(&ps);
 	free_ps(&ps);
 	return (0);
 }
