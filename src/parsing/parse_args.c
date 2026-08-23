@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pahenriq <pahenriq@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: hegoncal <hegoncal@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 19:21:40 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/15 15:07:14 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/22 15:21:18 by hegoncal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 int	is_unique(int value, t_ps *ps)
 {
@@ -58,6 +58,7 @@ t_strategy	parse_strategy(char *argv)
 		return (ADAPTIVE);
 	return (STRATEGY_COUNT);
 }
+
 int	parse_and_set_arg(char *arg, t_ps *ps)
 {
 	t_node	*node;
