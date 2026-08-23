@@ -3,25 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pahenriq <pahenriq@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/15 13:52:15 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/17 21:57:31 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/23 15:02:48 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
-#include <stdio.h>
-
-// ToDo: remover;
-void	print_stack(t_node *top)
-{
-	while (top)
-	{
-		printf("%d\n", top->value);
-		top = top->next;
-	}
-}
+#include "push_swap.h"
 
 int	is_sorted(t_node *top)
 {
@@ -36,39 +25,27 @@ int	is_sorted(t_node *top)
 	return (1);
 }
 
-t_node	*find_min(t_node *top)
+int	get_index(t_ps *ps, int current_value)
 {
-	t_node	*min;
+	int		index;
 	t_node	*tmp;
 
-	if (!top)
-		return (NULL);
-	min = top;
-	tmp = top->next;
-	while (tmp != NULL)
+	index = 0;
+	tmp = ps->a;
+	while (tmp)
 	{
-		if (tmp->value < min->value)
-			min = tmp;
+		if (tmp->value < current_value)
+			index++;
 		tmp = tmp->next;
 	}
-	return (min);
-}
-
-int	find_min_index(t_node *top)
-{
-	t_node	*min;
-	int		i;
-
-	min = find_min(top);
-	if (!min)
-		return (-1);
-	i = 0;
-	while (top != min)
+	tmp = ps->b;
+	while (tmp)
 	{
-		i++;
-		top = top->next;
+		if (tmp->value < current_value)
+			index++;
+		tmp = tmp->next;
 	}
-	return (i);
+	return (index);
 }
 
 int	find_rank(t_node *top, int value)

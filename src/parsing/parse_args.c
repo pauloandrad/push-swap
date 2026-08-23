@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pahenriq <pahenriq@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 19:21:40 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/15 14:54:41 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/23 14:58:53 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 int	is_unique(int value, t_ps *ps)
 {
 	t_node	*tmp;
 
-	if (!ps->a.top)
+	if (!ps->a)
 		return (1);
-	tmp = ps->a.top;
+	tmp = ps->a;
 	while (tmp)
 	{
 		if (value == tmp->value)
@@ -58,6 +58,7 @@ t_strategy	parse_strategy(char *argv)
 		return (ADAPTIVE);
 	return (STRATEGY_COUNT);
 }
+
 int	parse_and_set_arg(char *arg, t_ps *ps)
 {
 	t_node	*node;
@@ -77,8 +78,8 @@ int	parse_and_set_arg(char *arg, t_ps *ps)
 	if (value < INT_MIN || value > INT_MAX || !is_unique((int)value, ps))
 		return (0);
 	node = node_new((int)value);
-	node_push_bottom(&ps->a.top, node);
-	ps->a.size++;
+	node_push_bottom(&ps->a, node);
+	ps->size_a += 1;
 	return (1);
 }
 

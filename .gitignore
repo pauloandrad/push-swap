@@ -5,7 +5,9 @@
 obj
 push_swap
 custom_tests
+compile_flags.txt
 
+.vscode
 .claude/settings.json
 #.claude
 #.debug

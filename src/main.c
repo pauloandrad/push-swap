@@ -3,19 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pahenriq <pahenriq@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 13:43:28 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/16 22:16:15 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/23 15:33:45 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include "stdio.h"
+
+void	print_stack2(t_node *top)
+{
+	t_node *tmp;
+
+	tmp = top;
+	while (tmp != NULL)
+	{
+		printf("%d\n", tmp->value);
+		tmp = tmp->next;
+	}
+}
 
 void	free_ps(t_ps *ps)
 {
-	stack_clear(&ps->a.top);
-	stack_clear(&ps->b.top);
+	stack_clear(&ps->a);
+	stack_clear(&ps->b);
 }
 
 int	main(int argc, char **argv)
@@ -31,9 +44,9 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	dispatch_strategy(&ps);
-	// print_bench(&ps);
-	print_stack(ps.a.top);
-	print_stack(ps.b.top);
+	print_stack2(ps.a);
+	if (ps.bench_mode)
+		print_bench(&ps);
 	free_ps(&ps);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   complex.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pahenriq <pahenriq@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/15 14:38:06 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/22 23:16:05 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/23 14:44:17 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	sort_b(t_ps *ps, int size, int pivot)
 	i = 0;
 	while (i < size)
 	{
-		if (ps->b.top->rank >= pivot)
+		if (ps->b->rank >= pivot)
 		{
 			op_pa(ps);
 			pushed += 1;
@@ -50,7 +50,7 @@ void	quick_sort_b(t_ps *ps, int min, int max, int size)
 		return ;
 	if (size == 2)
 	{
-		if (ps->b.top->rank < ps->b.top->next->rank)
+		if (ps->b->rank < ps->b->next->rank)
 			op_sb(ps);
 		return ;
 	}
@@ -71,7 +71,7 @@ int	sort_a(t_ps *ps, int size, int pivot)
 	i = 0;
 	while (i < size)
 	{
-		if (ps->a.top->rank < pivot)
+		if (ps->a->rank < pivot)
 		{
 			op_pb(ps);
 			pushed += 1;
@@ -98,7 +98,7 @@ void	quick_sort_a(t_ps *ps, int min, int max, int size)
 		return ;
 	if (size == 2)
 	{
-		if (ps->a.top->rank > ps->a.top->next->rank)
+		if (ps->a->rank > ps->a->next->rank)
 			op_sa(ps);
 		return ;
 	}
@@ -112,6 +112,6 @@ void	quick_sort_a(t_ps *ps, int min, int max, int size)
 
 void	run_complex(t_ps *ps)
 {
-	normalize_stack(ps->a.top);
-	quick_sort_a(ps, 1, ps->a.size, ps->a.size);
+	normalize_stack(ps->a);
+	quick_sort_a(ps, 1, ps->size_a, ps->size_a);
 }

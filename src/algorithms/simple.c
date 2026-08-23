@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simple.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pahenriq <pahenriq@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 21:40:03 by hegoncal          #+#    #+#             */
-/*   Updated: 2026/08/15 14:03:30 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/23 14:45:46 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static void	bubble_sort(t_ps *ps)
 	int	compared;
 
 	compared = 0;
-	while (compared < ps->a.size - 1)
+	while (compared < ps->size_a - 1)
 	{
-		if (ps->a.top->value > ps->a.top->next->value)
+		if (ps->a->value > ps->a->next->value)
 			op_sa(ps);
 		op_ra(ps);
 		compared++;
@@ -29,8 +29,8 @@ static void	bubble_sort(t_ps *ps)
 
 void	run_simple(t_ps *ps)
 {
-	if (!ps || ps->a.size < 2)
+	if (!ps || ps->size_a < 2)
 		return ;
-	while (!is_sorted(ps->a.top))
+	while (!is_sorted(ps->a))
 		bubble_sort(ps);
 }

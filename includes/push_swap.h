@@ -3,28 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pahenriq <pahenriq@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 12:59:35 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/22 22:48:10 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/23 15:04:25 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../libs/libft/libft.h"
+# include "libft.h"
 # include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
 
 typedef struct s_node
 {
-	int					value;
-	int					rank;
-	struct s_node		*next;
-	struct s_node		*prev;
-}						t_node;
+	int				value;
+	int				rank;
+	struct s_node	*next;
+	struct s_node	*prev;
+}					t_node;
 
 typedef enum e_strategy
 {
@@ -33,101 +33,98 @@ typedef enum e_strategy
 	COMPLEX,
 	ADAPTIVE,
 	STRATEGY_COUNT
-}						t_strategy;
+}					t_strategy;
 
 typedef enum e_chunk
 {
 	LOW,
 	HIGH,
 	CHUNK_COUNT
-}						t_chunk_strategy;
+}					t_chunk_strategy;
 
 typedef struct s_op_count
 {
-	int					sa;
-	int					sb;
-	int					ss;
-	int					pa;
-	int					pb;
-	int					ra;
-	int					rb;
-	int					rr;
-	int					rra;
-	int					rrb;
-	int					rrr;
-}						t_op_count;
-
-typedef struct s_stack
-{
-	t_node				*top;
-	int					size;
-}						t_stack;
+	int				sa;
+	int				sb;
+	int				ss;
+	int				pa;
+	int				pb;
+	int				ra;
+	int				rb;
+	int				rr;
+	int				rra;
+	int				rrb;
+	int				rrr;
+}					t_op_count;
 
 typedef struct s_ps
 {
-	t_stack				a;
-	t_stack				b;
-	float				disorder;
-	t_strategy			strategy;
-	int					bench_mode;
-	t_op_count			operations;
-}						t_ps;
+	t_node			*a;
+	t_node			*b;
+	int				size_a;
+	int				size_b;
+	float			disorder;
+	t_strategy		strategy;
+	int				bench_mode;
+	t_op_count		operations;
+}					t_ps;
 
 typedef struct s_chunk_op
 {
-	void				(*op_pd)(t_ps *ps);
-	void				(*op_rs)(t_ps *ps);
-	void				(*op_rrs)(t_ps *ps);
-	int					min;
-	int					max;
-	
-}						t_chunk;
+	void			(*op_pd)(t_ps *ps);
+	void			(*op_rs)(t_ps *ps);
+	void			(*op_rrs)(t_ps *ps);
+	int				min;
+	int				max;
 
-typedef void			(*t_fn)(t_ps *ps);
+}					t_chunk;
 
-int						parse_args(int argc, char **argv, t_ps *ps);
+typedef void		(*t_fn)(t_ps *ps);
 
-t_node					*node_new(int value);
-t_node					*build_stack(int *values, int count);
-// t_ps				*ps_new(t_node *stack_a);
-void					stack_clear(t_node **top);
-int						stack_size(t_node *top);
-int						is_sorted(t_node *top);
-void					print_stack(t_node *top);
-t_node					*find_min(t_node *top);
-int						find_min_index(t_node *top);
-void					normalize_stack(t_node *top);
+int					parse_args(int argc, char **argv, t_ps *ps);
 
-void					node_push_top(t_node **top, t_node *node);
-void					node_push_bottom(t_node **top, t_node *node);
-t_node					*node_pop_top(t_node **top);
-void					stack_swap_top(t_node **top);
-t_node					*stack_last(t_node *top);
-void					stack_rotate(t_node **top);
-void					stack_reverse_rotate(t_node **top);
+t_node				*node_new(int value);
+t_node				*build_stack(int *values, int count);
+void				stack_clear(t_node **top);
+int					stack_size(t_node *top);
+int					is_sorted(t_node *top);
+t_node				*find_min(t_node *top);
+int					find_min_index(t_node *top);
+void				normalize_stack(t_node *top);
 
-void					op_sa(t_ps *ps);
-void					op_sb(t_ps *ps);
-void					op_ss(t_ps *ps);
-void					op_pa(t_ps *ps);
-void					op_pb(t_ps *ps);
-void					op_ra(t_ps *ps);
-void					op_rb(t_ps *ps);
-void					op_rr(t_ps *ps);
-void					op_rra(t_ps *ps);
-void					op_rrb(t_ps *ps);
-void					op_rrr(t_ps *ps);
+void				node_push_top(t_node **top, t_node *node);
+void				node_push_bottom(t_node **top, t_node *node);
+t_node				*node_pop_top(t_node **top);
+void				stack_swap_top(t_node **top);
+t_node				*stack_last(t_node *top);
+void				stack_rotate(t_node **top);
+void				stack_reverse_rotate(t_node **top);
+int					get_index(t_ps *ps, int current_value);
+void				print_disorder(float disorder, int fd);
 
-float					calculate_disorder(t_node *top);
+void				op_sa(t_ps *ps);
+void				op_sb(t_ps *ps);
+void				op_ss(t_ps *ps);
+void				op_pa(t_ps *ps);
+void				op_pb(t_ps *ps);
+void				op_ra(t_ps *ps);
+void				op_rb(t_ps *ps);
+void				op_rr(t_ps *ps);
+void				op_rra(t_ps *ps);
+void				op_rrb(t_ps *ps);
+void				op_rrr(t_ps *ps);
 
-void					run_simple(t_ps *ps);
-void					run_medium(t_ps *ps);
-void					run_complex(t_ps *ps);
-void					run_adaptive(t_ps *ps);
+float				calculate_disorder(t_node *top);
+
+void				run_simple(t_ps *ps);
+void				run_medium(t_ps *ps);
+void				run_complex(t_ps *ps);
+void				run_adaptive(t_ps *ps);
 
 void (*select_strategy(float disorder))(t_ps *);
-void					dispatch_strategy(t_ps *ps);
+void				dispatch_strategy(t_ps *ps);
 
-void					print_bench(t_ps *ps);
+void				print_bench(t_ps *ps);
+void				print_strategy(t_strategy strategy, int fd);
 
 #endif

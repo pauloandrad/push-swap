@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   strategy_factory.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pahenriq <pahenriq@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 13:02:06 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/15 14:03:36 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/23 14:53:57 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	dispatch_strategy(t_ps *ps)
 {
 	void	(*handlers[STRATEGY_COUNT])(t_ps *ps);
 
-	ps->disorder = calculate_disorder(ps->a.top);
+	ps->disorder = calculate_disorder(ps->a);
 	handlers[SIMPLE] = run_simple;
 	handlers[MEDIUM] = run_medium;
 	handlers[COMPLEX] = run_complex;
