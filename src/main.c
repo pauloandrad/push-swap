@@ -44,7 +44,6 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	dispatch_strategy(&ps);
-	print_stack2(ps.a);
 	if (ps.bench_mode)
 		print_bench(&ps);
 	free_ps(&ps);
