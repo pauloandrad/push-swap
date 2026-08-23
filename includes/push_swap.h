@@ -6,7 +6,7 @@
 /*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 12:59:35 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/23 15:04:25 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/23 15:49:13 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct s_ps
 	int				size_b;
 	float			disorder;
 	t_strategy		strategy;
+	t_strategy		adap_strategy;
 	int				bench_mode;
 	t_op_count		operations;
 }					t_ps;
@@ -121,10 +122,11 @@ void				run_medium(t_ps *ps);
 void				run_complex(t_ps *ps);
 void				run_adaptive(t_ps *ps);
 
-void (*select_strategy(float disorder))(t_ps *);
+void				(*select_strategy(t_ps *ps))(t_ps *);
 void				dispatch_strategy(t_ps *ps);
 
+void				print_disorder(float disorder, int fd);
+void				print_strategy(t_strategy strategy, t_strategy adap_strategy, int fd);
 void				print_bench(t_ps *ps);
-void				print_strategy(t_strategy strategy, int fd);
 
 #endif

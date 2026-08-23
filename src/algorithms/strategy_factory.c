@@ -39,14 +39,23 @@ float	calculate_disorder(t_node *top)
 	return (errs / total_pairs);
 }
 
-void	(*select_strategy(float disorder))(t_ps *ps)
+void	(*select_strategy(t_ps *ps))(t_ps *ps)
 {
-	if (disorder < 0.2)
+	if (ps->disorder < 0.2)
+	{
+		ps->adap_strategy = SIMPLE;
 		return (run_simple);
-	else if (0.2 <= disorder && disorder < 0.5)
+	}
+	else if (ps->disorder >= 0.2 && ps->disorder < 0.5)
+	{
+		ps->adap_strategy = MEDIUM;
 		return (run_medium);
+	}
 	else
+	{
+		ps->adap_strategy = COMPLEX;
 		return (run_complex);
+	}
 }
 
 void	dispatch_strategy(t_ps *ps)
@@ -57,7 +66,7 @@ void	dispatch_strategy(t_ps *ps)
 	handlers[SIMPLE] = run_simple;
 	handlers[MEDIUM] = run_medium;
 	handlers[COMPLEX] = run_complex;
-	handlers[ADAPTIVE] = select_strategy(ps->disorder);
+	handlers[ADAPTIVE] = select_strategy(ps);
 	if (handlers[ps->strategy])
 		handlers[ps->strategy](ps);
 }
