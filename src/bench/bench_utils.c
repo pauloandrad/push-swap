@@ -35,7 +35,7 @@ void	print_disorder(float disorder, int fd)
 	ft_putstr_fd("%\n", fd);
 }
 
-void	print_strategy(t_strategy strategy, int fd)
+void	print_strategy(t_strategy strategy, t_strategy adap_strategy, int fd)
 {
 	ft_putstr_fd("[bench] strategy: ", fd);
 	if (strategy == SIMPLE)
@@ -45,5 +45,13 @@ void	print_strategy(t_strategy strategy, int fd)
 	else if (strategy == COMPLEX)
 		ft_putstr_fd("Complex / O(n log n)\n", fd);
 	else if (strategy == ADAPTIVE)
-		ft_putstr_fd("Adaptive / O(n√n)\n", fd);
+	{
+		ft_putstr_fd("Adaptive / ", fd);
+		if (adap_strategy == SIMPLE)
+			ft_putstr_fd("O(n²)\n", fd);
+		else if (adap_strategy == MEDIUM)
+			ft_putstr_fd("O(n√n)\n", fd);
+		else
+			ft_putstr_fd("O(n log n)\n", fd);
+	}
 }

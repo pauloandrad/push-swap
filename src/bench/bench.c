@@ -56,7 +56,7 @@ void	print_bench(t_ps *ps)
 
 	total = get_total_ops(&ps->operations);
 	print_disorder(ps->disorder, STDERR_FILENO);
-	print_strategy(ps->strategy, STDERR_FILENO);
+	print_strategy(ps->strategy, ps->adap_strategy, STDERR_FILENO);
 	ft_putstr_fd("[bench] total_ops: ", STDERR_FILENO);
 	ft_putnbr_fd(total, STDERR_FILENO);
 	write(STDERR_FILENO, "\n", 1);
