@@ -6,7 +6,7 @@
 /*   By: pahenriq <pahenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/15 13:52:15 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/16 22:12:16 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/17 21:57:31 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int	is_sorted(t_node *top)
 
 t_node	*find_min(t_node *top)
 {
-	t_node *min;
-	t_node *tmp;
+	t_node	*min;
+	t_node	*tmp;
 
 	if (!top)
 		return (NULL);
@@ -56,8 +56,8 @@ t_node	*find_min(t_node *top)
 
 int	find_min_index(t_node *top)
 {
-	t_node *min;
-	int i;
+	t_node	*min;
+	int		i;
 
 	min = find_min(top);
 	if (!min)
@@ -71,4 +71,30 @@ int	find_min_index(t_node *top)
 	return (i);
 }
 
+int	find_rank(t_node *top, int value)
+{
+	t_node	*current;
+	int		rank;
 
+	rank = 1;
+	current = top;
+	while (current)
+	{
+		if (current->value < value)
+			rank += 1;
+		current = current->next;
+	}
+	return (rank);
+}
+
+void	normalize_stack(t_node *top)
+{
+	t_node	*current;
+
+	current = top;
+	while (current)
+	{
+		current->rank = find_rank(top, current->value);
+		current = current->next;
+	}
+}

@@ -6,7 +6,7 @@
 /*   By: pahenriq <pahenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 12:59:35 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/16 22:36:02 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/22 19:54:42 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 typedef struct s_node
 {
 	int					value;
+	int					rank;
 	struct s_node		*next;
 	struct s_node		*prev;
 }						t_node;
@@ -76,9 +77,15 @@ typedef struct s_chunk_op
 {
 	void				(*op_pd)(t_ps *ps);
 	void				(*op_rs)(t_ps *ps);
-	t_stack				*other;
-	t_chunk_strategy	other_chunk;
-}						t_chunk_op;
+	void				(*op_rrs)(t_ps *ps);
+	t_stack				*dest_stack;
+	t_chunk_strategy	dest_label;
+	int					min;
+	int					max;
+	int					pivot;
+	t_chunk_strategy	label;
+	
+}						t_chunk;
 
 typedef void			(*t_fn)(t_ps *ps);
 
@@ -93,6 +100,7 @@ int						is_sorted(t_node *top);
 void					print_stack(t_node *top);
 t_node					*find_min(t_node *top);
 int						find_min_index(t_node *top);
+void					normalize_stack(t_node *top);
 
 void					node_push_top(t_node **top, t_node *node);
 void					node_push_bottom(t_node **top, t_node *node);
