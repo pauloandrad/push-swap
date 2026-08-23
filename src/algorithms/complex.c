@@ -6,11 +6,11 @@
 /*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/15 14:38:06 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/23 14:44:17 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/23 15:50:37 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 
 void	quick_sort_a(t_ps *ps, int min, int max, int size);
 

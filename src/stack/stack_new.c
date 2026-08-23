@@ -6,11 +6,11 @@
 /*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 20:31:09 by hegoncal          #+#    #+#             */
-/*   Updated: 2026/08/23 15:05:06 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/23 15:50:36 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 
 t_node	*node_new(int value)
 {

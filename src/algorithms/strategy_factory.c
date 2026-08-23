@@ -6,11 +6,11 @@
 /*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 13:02:06 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/23 14:53:57 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/23 15:50:36 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 
 float	calculate_disorder(t_node *top)
 {

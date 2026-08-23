@@ -6,11 +6,11 @@
 /*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 21:40:03 by hegoncal          #+#    #+#             */
-/*   Updated: 2026/08/23 14:45:46 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/23 15:50:36 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 
 static void	bubble_sort(t_ps *ps)
 {
