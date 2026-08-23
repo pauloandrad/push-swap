@@ -6,7 +6,7 @@
 /*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 12:59:35 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/23 15:49:13 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/23 15:53:26 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,6 @@ t_node				*build_stack(int *values, int count);
 void				stack_clear(t_node **top);
 int					stack_size(t_node *top);
 int					is_sorted(t_node *top);
-t_node				*find_min(t_node *top);
-int					find_min_index(t_node *top);
 void				normalize_stack(t_node *top);
 
 void				node_push_top(t_node **top, t_node *node);
@@ -120,7 +118,6 @@ float				calculate_disorder(t_node *top);
 void				run_simple(t_ps *ps);
 void				run_medium(t_ps *ps);
 void				run_complex(t_ps *ps);
-void				run_adaptive(t_ps *ps);
 
 void				(*select_strategy(t_ps *ps))(t_ps *);
 void				dispatch_strategy(t_ps *ps);
