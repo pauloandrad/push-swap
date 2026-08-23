@@ -5,6 +5,8 @@ SRCS = src/algorithms/complex.c \
        src/algorithms/medium.c \
        src/algorithms/simple.c \
        src/algorithms/strategy_factory.c \
+       src/bench/bench.c \
+       src/bench/bench_utils.c \
        src/stack/stack_new.c \
        src/stack/stack_push_pop.c \
        src/stack/stack_rotate.c \

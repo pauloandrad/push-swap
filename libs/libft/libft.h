@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+
+	+:+     */
+/*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+
+	+#+        */
+/*                                                +#+#+#+#+#+
+	+#+           */
 /*   Created: 2026/05/23 16:18:48 by pahenriq          #+#    #+#             */
 /*   Updated: 2026/07/19 16:10:00 by pahenriq         ###   ########.fr       */
 /*                                                                            */
@@ -18,6 +21,7 @@
 
 size_t	ft_strlen(const char *s);
 void	ft_putstr_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
 
 int		ft_isdigit(int c);
 int		ft_strcmp(char *s1, char *s2);
