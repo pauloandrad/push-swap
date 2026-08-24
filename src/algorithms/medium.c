@@ -6,7 +6,7 @@
 /*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/15 14:37:43 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/23 14:50:54 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/23 20:47:39 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	sort_to_b(t_ps *ps)
 	int	limit;
 	int	index;
 
-	chunk_size = 3;
+	chunk_size = ps->size_a * 100 / 10;
 	limit = chunk_size;
 	while (ps->a)
 	{

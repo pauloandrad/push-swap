@@ -6,7 +6,7 @@
 /*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/15 14:38:06 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/23 15:50:37 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/23 20:18:26 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,17 @@ void	quick_sort_b(t_ps *ps, int min, int max, int size)
 			op_sb(ps);
 		return ;
 	}
-	pivot = (min + max) / 2;
+	if (size == 3)
+	{
+		base_three_b(ps);
+		return ;
+	}
+	if (size == 5)
+	{
+		base_five_b(ps);
+		return ;
+	}
+	pivot = (min + max + 1) / 2;
 	pushed = sort_b(ps, size, pivot);
 	quick_sort_b(ps, min, pivot - 1, size - pushed);
 	quick_sort_a(ps, pivot, max, pushed);
@@ -102,7 +112,17 @@ void	quick_sort_a(t_ps *ps, int min, int max, int size)
 			op_sa(ps);
 		return ;
 	}
-	pivot = (min + max) / 2;
+	if (size == 3)
+	{
+		base_three_a(ps);
+		return ;
+	}
+	if (size == 5)
+	{
+		base_five_a(ps);
+		return ;
+	}
+	pivot = (min + max + 1) / 2;
 	pushed = sort_a(ps, size, pivot);
 	quick_sort_a(ps, pivot, max, size - pushed);
 	quick_sort_b(ps, min, pivot - 1, pushed);

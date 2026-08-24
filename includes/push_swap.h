@@ -70,16 +70,6 @@ typedef struct s_ps
 	t_op_count		operations;
 }					t_ps;
 
-typedef struct s_chunk_op
-{
-	void			(*op_pd)(t_ps *ps);
-	void			(*op_rs)(t_ps *ps);
-	void			(*op_rrs)(t_ps *ps);
-	int				min;
-	int				max;
-
-}					t_chunk;
-
 typedef void		(*t_fn)(t_ps *ps);
 
 int					parse_args(int argc, char **argv, t_ps *ps);
@@ -118,6 +108,11 @@ float				calculate_disorder(t_node *top);
 void				run_simple(t_ps *ps);
 void				run_medium(t_ps *ps);
 void				run_complex(t_ps *ps);
+
+void				base_three_a(t_ps *ps);
+void				base_three_b(t_ps *ps);
+void				base_five_a(t_ps *ps);
+void				base_five_b(t_ps *ps);
 
 void				(*select_strategy(t_ps *ps))(t_ps *);
 void				dispatch_strategy(t_ps *ps);

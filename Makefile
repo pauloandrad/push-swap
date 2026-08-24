@@ -1,7 +1,9 @@
 NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I includes -I $(LIBFT_DIR)
-SRCS = src/algorithms/complex.c \
+SRCS = src/algorithms/base.c \
+       src/algorithms/base_five.c \
+       src/algorithms/complex.c \
        src/algorithms/medium.c \
        src/algorithms/simple.c \
        src/algorithms/strategy_factory.c \

@@ -6,7 +6,7 @@
 /*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 13:43:28 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/23 15:33:45 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/23 19:06:55 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	dispatch_strategy(&ps);
-	print_stack2(ps.a);
+	// print_stack2(ps.a);
 	if (ps.bench_mode)
 		print_bench(&ps);
 	free_ps(&ps);
