@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_push_pop.c                                   :+:      :+:    :+:   */
+/*   stack_push_pop_swap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -58,11 +58,15 @@ t_node	*node_pop_top(t_node **top)
 
 void	stack_swap_top(t_node **top)
 {
-	int	tmp;
+	int	tmp_val;
+	int	tmp_rank;
 
 	if (!top || !*top || !(*top)->next)
 		return ;
-	tmp = (*top)->value;
+	tmp_val = (*top)->value;
+	tmp_rank = (*top)->rank;
 	(*top)->value = (*top)->next->value;
-	(*top)->next->value = tmp;
+	(*top)->rank = (*top)->next->rank;
+	(*top)->next->value = tmp_val;
+	(*top)->next->rank = tmp_rank;
 }

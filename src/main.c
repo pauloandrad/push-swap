@@ -6,24 +6,11 @@
 /*   By: pahenriq <pahenriq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/09 13:43:28 by pahenriq          #+#    #+#             */
-/*   Updated: 2026/08/23 15:33:45 by pahenriq         ###   ########.fr       */
+/*   Updated: 2026/08/23 21:08:02 by pahenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include "stdio.h"
-
-void	print_stack2(t_node *top)
-{
-	t_node *tmp;
-
-	tmp = top;
-	while (tmp != NULL)
-	{
-		printf("%d\n", tmp->value);
-		tmp = tmp->next;
-	}
-}
 
 void	free_ps(t_ps *ps)
 {

@@ -25,33 +25,6 @@ t_node	*node_new(int value)
 	return (node);
 }
 
-t_node	*build_stack(int *values, int count)
-{
-	t_node	*top;
-	t_node	*new_node;
-	int		i;
-
-	if (!values || count <= 0)
-		return (NULL);
-	top = NULL;
-	i = count - 1;
-	while (i >= 0)
-	{
-		new_node = node_new(values[i]);
-		if (!new_node)
-		{
-			stack_clear(&top);
-			return (NULL);
-		}
-		new_node->next = top;
-		if (top)
-			top->prev = new_node;
-		top = new_node;
-		i--;
-	}
-	return (top);
-}
-
 void	stack_clear(t_node **top)
 {
 	t_node	*tmp;
@@ -71,8 +44,8 @@ void	stack_clear(t_node **top)
 
 int	stack_size(t_node *top)
 {
-	int nodes;
-	t_node *tmp;
+	int		nodes;
+	t_node	*tmp;
 
 	nodes = 0;
 	tmp = top;

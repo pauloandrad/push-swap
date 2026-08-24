@@ -39,7 +39,7 @@ float	calculate_disorder(t_node *top)
 	return (errs / total_pairs);
 }
 
-void	(*select_strategy(t_ps *ps))(t_ps *ps)
+t_fn	select_strategy(t_ps *ps)
 {
 	if (ps->disorder < 0.2)
 	{

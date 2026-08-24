@@ -1,14 +1,17 @@
 NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I includes -I $(LIBFT_DIR)
-SRCS = src/algorithms/complex.c \
+SRCS = src/algorithms/base_three.c \
+       src/algorithms/base_five.c \
+       src/algorithms/base_utils.c \
+       src/algorithms/complex.c \
        src/algorithms/medium.c \
        src/algorithms/simple.c \
        src/algorithms/strategy_factory.c \
        src/bench/bench.c \
        src/bench/bench_utils.c \
        src/stack/stack_new.c \
-       src/stack/stack_push_pop.c \
+       src/stack/stack_push_pop_swap.c \
        src/stack/stack_rotate.c \
        src/stack/stack_utils.c \
        src/operations/ops_combo.c \

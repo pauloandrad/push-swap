@@ -70,22 +70,11 @@ typedef struct s_ps
 	t_op_count		operations;
 }					t_ps;
 
-typedef struct s_chunk_op
-{
-	void			(*op_pd)(t_ps *ps);
-	void			(*op_rs)(t_ps *ps);
-	void			(*op_rrs)(t_ps *ps);
-	int				min;
-	int				max;
-
-}					t_chunk;
-
 typedef void		(*t_fn)(t_ps *ps);
 
 int					parse_args(int argc, char **argv, t_ps *ps);
 
 t_node				*node_new(int value);
-t_node				*build_stack(int *values, int count);
 void				stack_clear(t_node **top);
 int					stack_size(t_node *top);
 int					is_sorted(t_node *top);
@@ -119,11 +108,19 @@ void				run_simple(t_ps *ps);
 void				run_medium(t_ps *ps);
 void				run_complex(t_ps *ps);
 
-void				(*select_strategy(t_ps *ps))(t_ps *);
+void				base_three_a(t_ps *ps);
+void				base_three_b(t_ps *ps);
+void				base_five_a(t_ps *ps);
+void				base_five_b(t_ps *ps);
+
+int					handle_base_a(t_ps *ps, int size);
+int					handle_base_b(t_ps *ps, int size);
+
+t_fn				select_strategy(t_ps *ps);
 void				dispatch_strategy(t_ps *ps);
 
 void				print_disorder(float disorder, int fd);
-void				print_strategy(t_strategy strategy, t_strategy adap_strategy, int fd);
+void				print_strategy(t_strategy s, t_strategy a, int fd);
 void				print_bench(t_ps *ps);
 
 #endif

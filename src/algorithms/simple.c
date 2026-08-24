@@ -14,23 +14,42 @@
 
 static void	bubble_sort(t_ps *ps)
 {
-	int	compared;
+	int	sorted;
+	int	i;
 
-	compared = 0;
-	while (compared < ps->size_a - 1)
+	sorted = 0;
+	while (!sorted)
 	{
-		if (ps->a->value > ps->a->next->value)
-			op_sa(ps);
+		sorted = 1;
+		i = 0;
+		while (i < ps->size_a - 1)
+		{
+			if (ps->a->rank > ps->a->next->rank)
+			{
+				op_sa(ps);
+				sorted = 0;
+			}
+			op_ra(ps);
+			i++;
+		}
 		op_ra(ps);
-		compared++;
 	}
-	op_ra(ps);
 }
 
 void	run_simple(t_ps *ps)
 {
-	if (!ps || ps->size_a < 2)
+	if (!ps || ps->size_a < 2 || is_sorted(ps->a))
 		return ;
-	while (!is_sorted(ps->a))
-		bubble_sort(ps);
+	normalize_stack(ps->a);
+	if (ps->size_a == 3)
+	{
+		base_three_a(ps);
+		return ;
+	}
+	if (ps->size_a == 5)
+	{
+		base_five_a(ps);
+		return ;
+	}
+	bubble_sort(ps);
 }
