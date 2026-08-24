@@ -35,7 +35,7 @@ static void	sort_to_b(t_ps *ps)
 	int	limit;
 	int	index;
 
-	chunk_size = 3;
+	chunk_size = (ps->size_a * 5 / 100) + 15;
 	limit = chunk_size;
 	while (ps->a)
 	{
@@ -43,6 +43,8 @@ static void	sort_to_b(t_ps *ps)
 		if (index < limit)
 		{
 			op_pb(ps);
+			if (index < limit - (chunk_size / 2))
+				op_rb(ps);
 			if (stack_size(ps->b) == limit)
 				limit += chunk_size;
 		}
